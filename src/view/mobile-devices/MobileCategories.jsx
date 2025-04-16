@@ -6,11 +6,15 @@ import '../../assets/css/Categories.css';
 import { APIResponse } from '../ContextData';
 
 export default function MobileCategories() {
-  const { APIData, SetAPIData, OpenMenu, setOpenMenu } = React.useContext(APIResponse);
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const {
+    APIData,
+    OpenMenu,
+    setOpenMenu,
+    activeCategory,
+    setActiveCategory,
+  } = React.useContext(APIResponse);
   const modalRef = React.useRef(null);
 
-  // Close on outside click
   React.useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -23,17 +27,44 @@ export default function MobileCategories() {
     };
 
     if (OpenMenu) {
+      // close on any document scroll
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      // also close on scroll inside your scroll-div
+      const scrollContainer = document.getElementById('scroll-div');
+      if (scrollContainer) {
+        scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+      }
+
       document.addEventListener('mousedown', handleClickOutside);
-      window.addEventListener('scroll', handleScroll);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
+      const scrollContainer = document.getElementById('scroll-div');
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      }
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [OpenMenu, setOpenMenu]);
 
-  if (!APIData || !APIData.CategoryList) {
+  const handleCategoryClick = (categoryName) => {
+    setActiveCategory(categoryName);
+    const categoryElement = document.getElementById(`section-${categoryName}`);
+    const scrollContainer = document.getElementById('scroll-div');
+
+    if (categoryElement && scrollContainer) {
+      scrollContainer.scrollTo({
+        top: categoryElement.offsetTop - 10,
+        behavior: 'smooth',
+      });
+    }
+
+    setOpenMenu(false);
+  };
+
+  if (!APIData?.CategoryList) {
     return <p>Loading Data...</p>;
   }
 
@@ -42,10 +73,10 @@ export default function MobileCategories() {
       {OpenMenu && (
         <div
           style={{
-            position: 'absolute',
-            top: `${window.scrollY}px`, // Use scroll position
-            left: '50%',
-            transform: 'translateX(-50%)',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
             zIndex: 999,
             pointerEvents: 'none',
           }}
@@ -59,9 +90,13 @@ export default function MobileCategories() {
               width: '200px',
               backgroundColor: 'white',
               boxShadow: '0px 2px 10px rgba(0,0,0,0.2)',
+              margin: '10px auto',
             }}
           >
-            <div className="category-details" style={{ height: '300px', borderRadius: '0' }}>
+            <div
+              className="category-details"
+              style={{ height: '300px', borderRadius: 0 }}
+            >
               <List
                 className="List"
                 sx={{
@@ -76,10 +111,15 @@ export default function MobileCategories() {
                 {APIData.CategoryList.map((item, index) => (
                   <li
                     key={index}
-                    onMouseEnter={() => setActiveIndex(index)}
+                    onClick={() => handleCategoryClick(item.CategryName)}
                     style={{
-                      backgroundColor: activeIndex === index ? '#007fe0' : 'transparent',
+                      backgroundColor:
+                        activeCategory?.trim().toLowerCase() ===
+                        item.CategryName.trim().toLowerCase()
+                          ? '#007fe0'
+                          : 'transparent',
                       listStyle: 'none',
+                      cursor: 'pointer',
                     }}
                   >
                     <ul>
@@ -91,7 +131,11 @@ export default function MobileCategories() {
                               fontFamily: 'Poppins, sans-serif',
                               fontSize: '16px',
                               textTransform: 'capitalize',
-                              color: activeIndex === index ? 'white' : 'black',
+                              color:
+                                activeCategory?.trim().toLowerCase() ===
+                                item.CategryName.trim().toLowerCase()
+                                  ? 'white'
+                                  : 'black',
                             },
                           }}
                           className="category-name"

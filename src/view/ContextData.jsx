@@ -14,7 +14,8 @@ const ContextData = ({ children }) => {
   const [OpenMenu, setOpenMenu] = useState(false)
   const [totalAmount, setTotalAmount] = useState(0);
   const [ViewCart, setViewCart] = useState(false)
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(null)
+  
     const [openDialog, setOpenDialog] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null) 
 
@@ -29,6 +30,11 @@ const ContextData = ({ children }) => {
       SetModalOpen(true);
     }
   };
+  useEffect(() => {
+    if (APIData?.CategoryList?.length) {
+      setActiveCategory(APIData.CategoryList[0].CategryName);
+    }
+  }, [APIData]);
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
