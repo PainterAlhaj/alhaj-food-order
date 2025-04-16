@@ -20,7 +20,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Backdrop from '@mui/material/Backdrop';
 import { Button } from '@mui/material';
-
+ import noItemFound from'../assets/img/image/no-itemfound.svg'
 
 // react icons
 import { CiSearch } from "react-icons/ci";
@@ -31,6 +31,7 @@ import '../assets/css/Searchfood.css'
 
 import { APIResponse } from './ContextData';
 import AddProduct from './AddProduct';
+import { div } from 'framer-motion/client';
 
 
 const StyledFab = styled(Fab)({
@@ -123,7 +124,7 @@ export default function SearchFood() {
             <div className="input-box">
               <input type="text" name="" id="" placeholder='Search for dishes' value={Input} onChange={(e) => { SetInput(e.target.value) }} />
               {Input.length !== 0 &&
-                <IoCloseOutline onClick={(() => { SetInput('') })} />
+                <IoCloseOutline  className='close-icon icon' onClick={(() => { SetInput('') })} />
               }
             </div>
             <div className="search-btn">
@@ -228,8 +229,8 @@ export default function SearchFood() {
                                   >Add</Button>
                                 </div>
                               ) : (
-                                <Button variant='outlined' sx={{ borderRadius: '20px' }}
-                                  className='add-btn'
+                                <Button variant='outlined' sx={{ borderRadius: '20px',marginRight:"32px" ,}}
+                                  className='add-btn no-img'
                                   onClick={() => { ShowDetails(widget.ItemName) }}
 
                                 >Add</Button>
@@ -248,9 +249,15 @@ export default function SearchFood() {
                 )
               }) :
               FilteredData.length === 0 ? (
-                <Typography sx={{ textAlign: 'center', color: '#999', mt: 3, fontSize: '18px' }}>
+                <div className='no-item-found'>
+                <img src={noItemFound} alt="" />
+                
+                
+                <Typography className='no-item-text' sx={{ textAlign: 'center', color: '#999', }}>
                   No results found.
                 </Typography>
+
+                </div>
               )
                 :
                 FilteredData.map((item, index) => {
