@@ -29,7 +29,6 @@ function App() {
   <FoodStore/>
   <SmallCart/>
   {ViewCart && <MobileCart/> } 
-<MyLoader/>
   </>
   )
 }
