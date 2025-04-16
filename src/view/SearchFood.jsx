@@ -76,37 +76,34 @@ export default function SearchFood() {
     return () => clearTimeout(delayDebounce);
   }, [Input, APIData.CategoryList]);
 
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const category = entry.target.getAttribute("id").replace("section-", "");
-            setActiveCategory(category); // <- update your active category state
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.2,
-      }
-    );
+ // ① Add this useEffect to set up an IntersectionObserver on your scroll-div
+React.useEffect(() => {
+  const scrollContainer = document.getElementById('scroll-div');
+  if (!scrollContainer) return;
 
-    // Timeout to ensure DOM elements are mounted
-    const timeout = setTimeout(() => {
-      Object.values(categoryRefs.current).forEach((ref) => {
-        if (ref) observer.observe(ref);
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // read the category name from data-category
+          const cat = entry.target.getAttribute('data-category');
+          setActiveCategory(cat);
+        }
       });
-    }, 300); // a bit longer to make sure the DOM is painted
+    },
+    {
+      root: scrollContainer,    // observe inside your List
+      threshold: 0.2,           // 50% of the heading must be visible
+    }
+  );
 
-    return () => {
-      clearTimeout(timeout);
-      Object.values(categoryRefs.current).forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
+  // start observing every category header
+  Object.values(categoryRefs.current).forEach(el => {
+    if (el) observer.observe(el);
+  });
+
+  return () => observer.disconnect();
+}, [APIData, FilteredData]);
 
 
 
@@ -141,6 +138,7 @@ export default function SearchFood() {
                       ref={(el) => (categoryRefs.current[item.CategryName] = el)}
                       className="category-list"
                       id={`section-${item.CategryName}`}
+                      data-category={item.CategryName}  
                     >
 
                       <ListItemButton sx={{
