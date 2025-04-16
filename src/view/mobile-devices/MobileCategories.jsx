@@ -4,6 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import '../../assets/css/Categories.css';
 import { APIResponse } from '../ContextData';
+import MyLoader from '../MyLOader';
 
 export default function MobileCategories() {
   const {
@@ -65,7 +66,7 @@ export default function MobileCategories() {
   };
 
   if (!APIData?.CategoryList) {
-    return <p>Loading Data...</p>;
+    return <MyLoader/>
   }
 
   return (

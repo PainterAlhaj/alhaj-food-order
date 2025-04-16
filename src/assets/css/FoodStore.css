@@ -5,7 +5,7 @@
     grid-template-columns: 1fr 2fr 1fr;
     overflow-y: auto;
     align-items: center;
-    background: aliceblue;
+    /* background: aliceblue; */
 
 
 }

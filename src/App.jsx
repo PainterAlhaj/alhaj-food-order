@@ -15,6 +15,7 @@ import MobileCategories from './view/mobile-devices/MobileCategories'
 import CategoryMenu from './view/mobile-devices/CategoryMenu'
 import SmallCart from './view/mobile-devices/SmallCart'
 import MobileCart from './view/mobile-devices/MobileCart'
+import MyLoader from './view/MyLOader'
 
 function App() {
       const {APIData,ModalOpen,SetModalOpen,ViewCart}= useContext(APIResponse)
@@ -28,7 +29,7 @@ function App() {
   <FoodStore/>
   <SmallCart/>
   {ViewCart && <MobileCart/> } 
-
+<MyLoader/>
   </>
   )
 }
