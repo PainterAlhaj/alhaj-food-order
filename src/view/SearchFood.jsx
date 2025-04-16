@@ -32,7 +32,6 @@ import '../assets/css/Searchfood.css'
 import { APIResponse } from './ContextData';
 import AddProduct from './AddProduct';
 import { div } from 'framer-motion/client';
-import MyLoader from './MyLOader';
 
 
 const StyledFab = styled(Fab)({
@@ -111,8 +110,7 @@ React.useEffect(() => {
 
 
   if (!APIData || !APIData.CategoryList) {
-    return <MyLoader/>
-    
+    return <p>Loading Data</p>
 
   }
 

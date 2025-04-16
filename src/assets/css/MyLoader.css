@@ -1,5 +1,6 @@
-@media (max-width:992px) {
+@media (min-width:992px) {
     .skeleton{
+        display: none ;
         position: relative;
         margin-left: 5% !important;
         margin-top: 20px;

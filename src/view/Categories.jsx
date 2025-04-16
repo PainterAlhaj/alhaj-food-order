@@ -4,7 +4,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { APIResponse } from './ContextData';
 import '../assets/css/Categories.css';
-import MyLoader from './MyLOader';
 
 export default function Categories() {
   const { APIData, activeCategory, setActiveCategory } = React.useContext(APIResponse);
@@ -34,7 +33,7 @@ export default function Categories() {
   
 
   if (!APIData || !APIData.CategoryList) {
-    return <MyLoader/>
+    return <p>Loading Data...</p>;
   }
 
   return (
