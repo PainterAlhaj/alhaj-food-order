@@ -27,7 +27,7 @@ import { CiSearch } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
 
 // import css file
-import '../assets/css/SearchFood.css'
+import '../assets/css/Searchfood.css'
 
 import { APIResponse } from './ContextData';
 import AddProduct from './AddProduct';
