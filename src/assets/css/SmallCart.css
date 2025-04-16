@@ -6,7 +6,7 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 100vw;
    
     /* background: #000; */
     background-color: #fff;
@@ -26,7 +26,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 95%;
+    width: 90%;
     border-radius: 8px;
     padding: 10px;
 
