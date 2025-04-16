@@ -113,8 +113,10 @@ padding: 10px;
 }
 .search-food-container .list{
     height: 100vh;
-
-    /* height: 100px; */
+}
+.search-food-container .list .food-img img{
+    height: 100px;
+    width: 100px;
 }
 }
 

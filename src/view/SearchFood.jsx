@@ -110,11 +110,6 @@ export default function SearchFood() {
 
 
 
-
-  //   SetInput(e.target.value)
-
-  // };
-
   if (!APIData || !APIData.CategoryList) {
     return <p>Loading Data</p>
 
@@ -151,6 +146,7 @@ export default function SearchFood() {
                         mb: "20px",
                         borderBottom: "1px dashed rgb(204, 204, 204)",
                         textTransform: 'capitalize',
+                        
 
                       }}>
 
@@ -166,7 +162,7 @@ export default function SearchFood() {
                             style: {
                               fontSize: '12px',
                               fontWeight: 500,
-                              fontFamily: 'Poppins,sans-serif'
+                              fontFamily: 'Poppins,sans-serif',
                             }
                           }}
                         />
@@ -175,10 +171,14 @@ export default function SearchFood() {
                       {item.ItemListWidget.map((widget, index) => {
                         return (
                           <ListItemButton key={index} sx={{
-                            textTransform: 'capitalize'
+                            textTransform: 'capitalize',
+                            display:'flex',
+                            justifyContent:'space-between'
+
                           }}>
 
                             <ListItemText primary={widget.ItemName}
+                            sx={{width:"calc(100% - 160px)"}}
                               primaryTypographyProps={{
                                 style: {
                                   fontWeight: 600,
@@ -194,7 +194,7 @@ export default function SearchFood() {
                                     sx={{
                                       color: "#999",
                                       fontSize: "14px",
-                                      fontWeight: '600'
+                                      fontWeight: '600',
                                     }}>
                                     {widget.Description}
                                   </Typography>
@@ -218,8 +218,8 @@ export default function SearchFood() {
                                   <img
                                     src={`https://www.foodchow.com/FoodItemImages/${widget.ItemImage}`}
                                     alt={widget.ItemName}
-                                    height={50}
-                                    width={50}
+                                    // height={50}
+                                    // width={50}
                                   // onError={(e) => e.target.src = '/fallback.jpg'} // fallback image
                                   />
                                   <Button variant='outlined' className='add-btn btn-img'
