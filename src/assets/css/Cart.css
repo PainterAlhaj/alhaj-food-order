@@ -192,6 +192,9 @@ border-bottom: 1px dashed rgb(204, 204, 204);
 }
 
 .cart-container .cart-details .price-info .checkout-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     /* padding: 10px 0; */
 
