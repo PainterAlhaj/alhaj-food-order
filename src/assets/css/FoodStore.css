@@ -1,0 +1,42 @@
+.food-store-container{
+}
+.food-store-container .food-store-data{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    overflow-y: auto;
+    align-items: center;
+    background: aliceblue;
+
+
+}
+
+   
+.food-store-container .food-store-data .searchfood::-webkit-scrollbar {
+    width: 5px;
+    display: none;
+  }
+  .food-store-container .food-store-data .searchfood::-webkit-scrollbar-thumb {
+      background: #007fe0;
+    }
+
+
+.food-store-container .food-store-data  .show-in-mobile{
+    display: none;
+    /* border: 1px solid black; */
+}
+
+@media (max-width:992px){
+    .food-store-container .food-store-data .category{
+        /* display: none; */
+    }
+    .food-store-container .food-store-data .cart{
+        display: none;
+    }
+    .food-store-container .food-store-data{
+        grid-template-columns: 1fr;
+    }
+.food-store-container .food-store-data  .show-in-mobile{
+display: block;
+}
+
+}

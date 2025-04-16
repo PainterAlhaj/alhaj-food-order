@@ -1,0 +1,39 @@
+.menu-container .menu-details{
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-container .menu-details .btn{
+    border-radius: 20px;
+    text-transform: capitalize;
+    margin: 0 5px;
+    box-shadow: none;
+    font-family: Poppins,sans-serif;
+    font-weight: 600;
+
+}
+@media (max-width:992px){
+    .menu-container .menu-details{
+    padding: 8px;
+
+        justify-content: start;
+    }
+.menu-container .menu-details .btn{
+    /* font-size: 12px; */
+  
+}
+
+}
+@media (max-width:500px){
+    .menu-container .menu-details{
+    
+            justify-content: center;
+        }
+    .menu-container .menu-details .btn{
+        font-size: 13px;
+    margin: 0 1px;
+
+        padding: 6px 8px;
+    }
+}

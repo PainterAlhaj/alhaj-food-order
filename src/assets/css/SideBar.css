@@ -1,0 +1,68 @@
+.drawer-container{
+    padding: 20px;
+    display: none;
+}
+
+.drawer-container .menu-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.drawer-container .menu-icon .icon{
+border-radius: 2px;
+border: 1px solid rgb(0,0,0,1.5);
+display: flex;
+opacity: 0.5;
+align-items: center;
+padding: 5px;
+}
+.drawer-container .menu-icon  .logo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.drawer-container .menu-icon  .logo  img{
+    width: 95px;
+    height: auto;
+}
+
+.drawer-container .right{
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    /* padding: 10px 0; */
+}
+
+.drawer-container .right .btn{
+    text-transform: capitalize; 
+    font-family: Poppins, sans-serif ;
+   border-radius: 20px;
+   font-size: 20px;
+   }
+   .drawer-container .right .contact a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: black;
+   }
+
+   @media (max-width:992px) {
+    .drawer-container{
+        display: block;
+        /* font-size: 15px; */
+    }
+    .drawer-container .right{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .drawer-container .right .btn{
+      
+       font-size: 15px;
+       }
+   }

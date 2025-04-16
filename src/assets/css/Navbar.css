@@ -1,0 +1,79 @@
+.toolbar{
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    
+}
+.toolbar .menu-icon{
+    border: 1px solid;
+display: none;
+justify-content: center;
+align-items: center;
+padding: 5px;
+border-radius: 2px;
+
+}
+.toolbar .left{
+    display: flex;
+    /* gap: 10px; */
+       align-items: center;
+}
+.toolbar .left .logo  img{
+    height: 50px;
+    margin-right: 40px;
+}
+.toolbar .left .title h3{
+    font-size: 22px;
+}
+.toolbar .left .title p{
+    font-size: 14px;
+    
+}
+.toolbar .middle{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+.toolbar .middle p{
+    font-size: 16px;
+    letter-spacing: 1px;
+    /* font-weight:  ; */
+}
+.toolbar .right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+ .toolbar .right .btn{
+ text-transform: capitalize; 
+ font-family: Poppins, sans-serif ;
+border-radius: 20px;
+/* font-size: 20px; */
+}
+.toolbar .right a{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+     color: black;
+}
+@media (max-width:992px) {
+    .toolbar{
+        justify-content: unset;
+    }
+    .toolbar .left{
+        justify-content: center;
+        width: 100%;
+    
+    }
+    .toolbar .menu-icon{
+        display: flex;
+    }
+    .toolbar .middle , .toolbar .right{
+        display: none;
+    }
+    .toolbar .left .title{
+        display: none;
+    }
+}
