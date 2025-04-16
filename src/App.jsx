@@ -28,7 +28,6 @@ function App() {
   <FoodStore/>
   <SmallCart/>
   {ViewCart && <MobileCart/> } 
-  {/* <CategoryMenu/> */}
 
   </>
   )

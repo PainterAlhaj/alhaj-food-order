@@ -132,8 +132,9 @@ export default function Cart() {
                 sx={{
                   position: 'relative',
                   overflow: 'auto',
-                  height: `${ViewCart ? 'calc(100vh - 60%)' : '110px'}`,
-                  '& ul': { padding: `${ViewCart ? '10px' : '0'}` }
+                  height: `${ViewCart ? 'calc(100vh - 200px)' : '110px'}`,
+                  maxHeight:'auto',
+                  '& ul': { paddingBottom: `${ViewCart ? '50px' : '0'}` }
                 }}
                 subheader={<li />}
               >

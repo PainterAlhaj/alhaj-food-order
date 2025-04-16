@@ -5,15 +5,7 @@ import { APIResponse } from '../ContextData';
 
 const MobileCart = () => {
       const { ViewCart } = useContext(APIResponse); 
-      useEffect(() => {
-        if(ViewCart){
-        document.body.style.overflow = 'hidden';
-        }
-      
-        return () => {
-          document.body.style.overflow = 'auto';
-        };
-      }, []);
+ 
     
   return (
    <> 
