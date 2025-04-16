@@ -94,6 +94,7 @@ React.useEffect(() => {
     {
       root: scrollContainer,    // observe inside your List
       threshold: 0.2,           // 50% of the heading must be visible
+      rootMargin: '10px 0px 0px 0px',
     }
   );
 
