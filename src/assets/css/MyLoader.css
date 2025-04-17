@@ -1,0 +1,13 @@
+@media (min-width:992px) {
+    .skeleton{
+        display: none ;
+        position: relative;
+        margin-left: 5% !important;
+        margin-top: 20px;
+    }
+}
+@media (min-height:500px) {
+    .skeleton{
+        margin-left: 2% !important;
+    }
+}
