@@ -224,9 +224,10 @@ React.useEffect(() => {
                                   <img
                                     src={`https://www.foodchow.com/FoodItemImages/${widget.ItemImage}`}
                                     alt={widget.ItemName}
-                                    // height={50}
-                                    // width={50}
-                                  // onError={(e) => e.target.src = '/fallback.jpg'} // fallback image
+                              
+                                    onError={(e) => {
+                                      e.target.style.visibility="hidden"
+                                    }}
                                   />
                                   <Button variant='outlined' className='add-btn btn-img'
 
@@ -356,9 +357,9 @@ React.useEffect(() => {
                                   <img
                                     src={`https://www.foodchow.com/FoodItemImages/${widget.ItemImage}`}
                                     alt={widget.ItemName}
-                                    // height={50}
-                                    // width={50}
-                                  // onError={(e) => e.target.src = '/fallback.jpg'} // fallback image
+                                    onError={(e) => {     //FallBack Image
+                                      e.target.style.visibility="hidden"
+                                    }}
                                   />
                                   <Button variant='outlined' className='add-btn btn-img'
 
