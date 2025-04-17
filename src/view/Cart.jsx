@@ -100,9 +100,10 @@ export default function Cart() {
     <>
       <div className="cart-container" style={{ padding: `${ViewCart ? '0' : '20px'}` }}>
         <div
-          className="cart-details"
+          className={`cart-details ${ViewCart?'':'extra-height'}`}
           style={{
             height: `${ViewCart ? '100vh' : '380px'}`,
+
             border: `${ViewCart ? 'none' : '1px solid rgb(202, 202, 202)'}`
           }}
         >
@@ -128,13 +129,16 @@ export default function Cart() {
           {cartItems.length > 0 ? (
             <div className="cart-available">
               <List
-                className="List"
+                className={`List ${ViewCart?'':'extra-height-list'}`}
+                
                 sx={{
                   position: 'relative',
                   overflow: 'auto',
                   height: `${ViewCart ? 'calc(100vh - 200px)' : '110px'}`,
                   maxHeight:'auto',
-                  '& ul': { paddingBottom: `${ViewCart ? '50px' : '0'}` }
+
+                
+                  '& ul': { paddingBottom: `${ViewCart ? '60px' : '0'}` }
                 }}
                 subheader={<li />}
               >

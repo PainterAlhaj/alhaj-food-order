@@ -1,11 +1,10 @@
-.food-store-container{
-}
+
 .food-store-container .food-store-data{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     overflow-y: auto;
     align-items: center;
-    /* background: aliceblue; */
+    background: aliceblue;
 
 
 }
@@ -39,4 +38,11 @@
 display: block;
 }
 
+}
+@media (min-height:600px) {
+    .food-store-container{
+        height: 100vh;
+        overflow-y: hidden;
+    
+    }
 }

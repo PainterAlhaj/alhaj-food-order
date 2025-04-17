@@ -137,7 +137,10 @@ React.useEffect(() => {
                 return (
                   <React.Fragment key={index}>
 
-                    <div
+                    <div style={{
+border: '1px solid rgb(202, 202, 202)',
+
+                    }}
                       ref={(el) => (categoryRefs.current[item.CategryName] = el)}
                       className="category-list"
                       id={`section-${item.CategryName}`}
