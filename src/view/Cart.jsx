@@ -29,10 +29,11 @@ export default function Cart() {
     setOpenDialog,
     itemToDelete,
     setItemToDelete,
-    handleCloseDialog
+    handleCloseDialog,
+    DeleteAll, 
+    setDeleteAll,
   } = React.useContext(APIResponse);
 
-  const [DeleteAll, setDeleteAll] = React.useState(false);
 
   const handleOpenDialog = (index) => {
     setItemToDelete(index);
@@ -43,9 +44,11 @@ export default function Cart() {
   const DeleteAllCart = () => {
     setDeleteAll(true);
     setOpenDialog(true);
+
   };
 
   const handleClearCart = () => {
+
     setCartItems([]);
     setOpenDialog(false);
     setDeleteAll(false);
@@ -53,6 +56,8 @@ export default function Cart() {
 
   const handleConfirmDelete = () => {
     if (DeleteAll) {
+    console.log("delete allcart")
+
       handleClearCart();
     } else {
       const updated = [...cartItems];
@@ -66,22 +71,32 @@ export default function Cart() {
   const handleIncrement = (index) => {
     const updated = [...cartItems];
     updated[index].quantity = Number(updated[index].quantity) + 1;
+  
+    if (updated[index].originalPrice) {
+      updated[index].price = Number(updated[index].originalPrice) * updated[index].quantity;
+    }
+  
     setCartItems(updated);
   };
-
+  
   const handleDecrement = (index) => {
     const updated = [...cartItems];
     if (Number(updated[index].quantity) > 1) {
       updated[index].quantity = Number(updated[index].quantity) - 1;
+  
+      if (updated[index].originalPrice) {
+        updated[index].price = Number(updated[index].originalPrice) * updated[index].quantity;
+      }
+  
+      setCartItems(updated);
     } else {
       handleOpenDialog(index); // Confirm before removing
-      return;
     }
-    setCartItems(updated);
   };
+  ;
 
   const itemTotal = cartItems.reduce(
-    (acc, item) => acc + Number(item.price) * Number(item.quantity),
+    (acc, item) => acc + Number(item.price) ,
     0
   );
   const otherCharges = 0;
@@ -154,7 +169,8 @@ export default function Cart() {
                       >
                         <ListItemText
                           primary={item.name}
-                          secondary={`Rs. ${Number(item.price) * Number(item.quantity)}`}
+                          secondary={`Rs. ${Number(item.price)}`}
+
                           primaryTypographyProps={{ style: { fontFamily: 'Poppins, sans-serif' } }}
                           secondaryTypographyProps={{ style: { fontFamily: 'Poppins, sans-serif' } }}
                           sx={{

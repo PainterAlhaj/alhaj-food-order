@@ -17,7 +17,9 @@ const ContextData = ({ children }) => {
   const [activeCategory, setActiveCategory] = useState(null)
   
     const [openDialog, setOpenDialog] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState(null) 
+  const [itemToDelete, setItemToDelete] = useState(null)
+  const [DeleteAll, setDeleteAll] = React.useState(false);
+
 
   
   const ShowDetails = (productName) => {
@@ -49,7 +51,7 @@ const ContextData = ({ children }) => {
     setItemToDelete(null);
   };
 
-  const Dialogstate={openDialog,setOpenDialog,itemToDelete,setItemToDelete,handleCloseDialog}
+  const Dialogstate={openDialog,setOpenDialog,itemToDelete,setItemToDelete,handleCloseDialog,DeleteAll, setDeleteAll}
 
 
   const SendData = {

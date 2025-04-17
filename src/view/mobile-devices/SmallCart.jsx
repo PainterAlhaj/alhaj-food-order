@@ -13,8 +13,10 @@ const SmallCart = () => {
   }, [totalAmount]);
 
   // const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0); // Calculate total items
-  const totalItems = cartItems.reduce((acc, item) => acc + Number(item.quantity), 0);
-const totalAmounts = cartItems.reduce((acc, item) => acc + (Number(item.price) * Number(item.quantity)), 0);
+  // const totalItems = cartItems.reduce((acc, item) => acc + Number(item.quantity), 0);
+  const totalItems = cartItems.length;
+
+const totalAmounts = cartItems.reduce((acc, item) => acc + (Number(item.price) ), 0);
 
 
   return (

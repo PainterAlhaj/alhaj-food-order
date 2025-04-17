@@ -68,32 +68,36 @@ const AddProduct = () => {
   const handleAddToCart = () => {
     const qty = parseInt(quantity, 10);
     if (isNaN(qty) || qty <= 0) return;
-
+  
+    const basePrice = selectedSize?.Price || SelectedItem.Price || 0;
+  
     const itemToAdd = {
       name: SelectedItem.ItemName,
       size: selectedSize?.SizeName || null,
-      price: (selectedSize?.Price || SelectedItem.Price || 0) * qty,
+      price: basePrice * qty,
+      originalPrice: basePrice, // ✅ Store originalPrice for later calculations
       preferences: selectedPreferences,
       quantity: qty
     };
-
+  
     const existingIndex = cartItems.findIndex(item =>
       item.name === itemToAdd.name &&
       item.size === itemToAdd.size &&
       JSON.stringify(item.preferences) === JSON.stringify(itemToAdd.preferences)
     );
-
+  
     if (existingIndex !== -1) {
       const updatedItems = [...cartItems];
       updatedItems[existingIndex].quantity += qty;
-      updatedItems[existingIndex].price += (selectedSize?.Price || SelectedItem.Price || 0) * qty;
+      updatedItems[existingIndex].price = updatedItems[existingIndex].originalPrice * updatedItems[existingIndex].quantity;
       setCartItems(updatedItems);
     } else {
       setCartItems(prev => [...prev, itemToAdd]);
     }
-
+  
     SetModalOpen(false);
   };
+  
 
   return (
     <Modal

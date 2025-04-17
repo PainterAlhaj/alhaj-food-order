@@ -5,7 +5,7 @@ import {  Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui
 import { RiErrorWarningLine } from 'react-icons/ri';
 
 const DialogBox = ({handleConfirmDelete}) => {
-      const { ViewCart, setViewCart ,openDialog,setOpenDialog,itemToDelete,setItemToDelete,handleCloseDialog} = useContext(APIResponse);
+      const { ViewCart, setViewCart ,openDialog,setOpenDialog,itemToDelete,setItemToDelete,handleCloseDialog,DeleteAll, setDeleteAll} = useContext(APIResponse);
     
   return (
     <Dialog open={openDialog} onClose={handleCloseDialog} sx={{boxShadow:"none",borderRadius:'0',zIndex:'10000'}} >
