@@ -13,7 +13,7 @@
     background: white;
     border: 1px solid rgb(202, 202, 202);
 
-    /* overflow-y: auto;    */
+    overflow-y: auto;   
 
 }
 
@@ -270,9 +270,7 @@ background: none;
   height: 70vh !important;
   }
   .cart-container .cart-details .cart-available .extra-height-list{
-   height: auto;
-   height: 100%  !important;
-   max-height: unset !important;
+   height: 30vh !important;
 
   }
   .cart-container .cart-details .List ul{
@@ -284,9 +282,9 @@ background: none;
    height: 80vh !important;
    }
    .cart-container .cart-details .cart-available .extra-height-list{
-    height: auto;
-    height: 100%  !important;
-    max-height: unset !important;
+    
+   height: 50vh !important;
+
 
    }
    }
