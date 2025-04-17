@@ -197,6 +197,8 @@ React.useEffect(() => {
                                       color: "#999",
                                       fontSize: "14px",
                                       fontWeight: '600',
+                                  fontFamily: 'Poppins,sans-serif',
+
                                     }}>
                                     {widget.Description}
                                   </Typography>
@@ -205,6 +207,8 @@ React.useEffect(() => {
                                       color: '#007fe0',
                                       fontWeight: 600,
                                       fontSize: '16px',
+                                  fontFamily: 'Poppins,sans-serif',
+
                                     }}>
                                       {`Rs.${widget.Price}`}
                                     </Typography>
@@ -325,6 +329,8 @@ React.useEffect(() => {
                                       color: "#999",
                                       fontSize: "14px",
                                       fontWeight: '600',
+                                  fontFamily: 'Poppins,sans-serif',
+
                                     }}>
                                     {widget.Description}
                                   </Typography>
@@ -333,6 +339,8 @@ React.useEffect(() => {
                                       color: '#007fe0',
                                       fontWeight: 600,
                                       fontSize: '16px',
+                                  fontFamily: 'Poppins,sans-serif',
+
                                     }}>
                                       {`Rs.${widget.Price}`}
                                     </Typography>
