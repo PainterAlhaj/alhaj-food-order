@@ -255,107 +255,126 @@ React.useEffect(() => {
                 
                 
                 <Typography className='no-item-text' sx={{ textAlign: 'center', color: '#999', }}>
-                  No results found.
+                  No Items Found.
                 </Typography>
 
                 </div>
               )
                 :
                 FilteredData.map((item, index) => {
-                  console.log("item", item)
                   return (
                     <React.Fragment key={index}>
-                      <div className='category-list'>
-                        <ListItemButton sx={{
-                          mb: "20px",
-                          borderBottom: "1px dashed rgb(204, 204, 204)",
-                          textTransform: 'capitalize',
 
-                        }}>
+                    <div
+                      ref={(el) => (categoryRefs.current[item.CategryName] = el)}
+                      className="category-list"
+                      id={`section-${item.CategryName}`}
+                      data-category={item.CategryName}  
+                    >
 
-                          <ListItemText primary={item.CategryName} secondary={`${item.ItemListWidget.length} items`}
-                            primaryTypographyProps={{
-                              style: {
-                                fontSize: '20px',
-                                fontWeight: 700,
-                                fontFamily: 'Poppins,sans-serif'
-                              },
-                            }}
-                            secondaryTypographyProps={{
-                              style: {
-                                fontSize: '12px',
-                                fontWeight: 500,
-                                fontFamily: 'Poppins,sans-serif'
-                              }
-                            }}
-                          />
+                      <ListItemButton sx={{
+                        mb: "20px",
+                        borderBottom: "1px dashed rgb(204, 204, 204)",
+                        textTransform: 'capitalize',
+                        
 
-                        </ListItemButton>
-                        {item.ItemListWidget.map((widget, index) => {
-                          return (
-                            <ListItemButton key={index} sx={{
-                              textTransform: 'capitalize'
-                            }}>
+                      }}>
 
-                              <ListItemText primary={widget.ItemName}
-                                primaryTypographyProps={{
-                                  style: {
-                                    fontWeight: 600,
-                                    fontSize: '18px',
-                                    fontFamily: 'Poppins,sans-serif',
-                                    color: "#212529",
+                        <ListItemText primary={item.CategryName} secondary={`${item.ItemListWidget.length} items`}
+                          primaryTypographyProps={{
+                            style: {
+                              fontSize: '20px',
+                              fontWeight: 700,
+                              fontFamily: 'Poppins,sans-serif'
+                            },
+                          }}
+                          secondaryTypographyProps={{
+                            style: {
+                              fontSize: '12px',
+                              fontWeight: 500,
+                              fontFamily: 'Poppins,sans-serif',
+                            }
+                          }}
+                        />
 
-                                  }
-                                }}
-                                secondary={
-                                  <>
-                                    <Typography component={'div'}
-                                      sx={{
-                                        color: "#999",
-                                        fontSize: "14px",
-                                        fontWeight: '600'
-                                      }}>
-                                      {widget.Description}
-                                    </Typography>
-                                    {widget.Price !== null &&
-                                      <Typography component={'div'} sx={{
-                                        color: '#007fe0',
-                                        fontWeight: 600,
-                                        fontSize: '16px',
-                                      }}>
-                                        {`Rs.${widget.Price}`}
-                                      </Typography>
-                                    }
-                                  </>
+                      </ListItemButton>
+                      {item.ItemListWidget.map((widget, index) => {
+                        return (
+                          <ListItemButton key={index} sx={{
+                            textTransform: 'capitalize',
+                            display:'flex',
+                            justifyContent:'space-between'
+
+                          }}>
+
+                            <ListItemText primary={widget.ItemName}
+                            sx={{width:"calc(100% - 160px)"}}
+                              primaryTypographyProps={{
+                                style: {
+                                  fontWeight: 600,
+                                  fontSize: '18px',
+                                  fontFamily: 'Poppins,sans-serif',
+                                  color: "#212529",
+
                                 }
-
-                              />
-
-                              {
-                                (widget.ItemImage) ? (
-                                  <div className="food-img" style={{}}>
-                                    <img src={`https://www.foodchow.com/FoodItemImages/${widget.ItemImage}`} alt="" height={50} width={50} />
-                                    <Button variant='outlined' sx={{ borderRadius: '20px' }}
-                                      onClick={() => { ShowDetails(widget.ItemName) }}
-                                    >Add</Button>
-                                  </div>
-                                ) : (
-                                  <Button variant='outlined' sx={{ borderRadius: '20px' }}
-                                    onClick={() => { ShowDetails(widget.ItemName) }}
-
-                                  >Add</Button>
-
-                                )
+                              }}
+                              secondary={
+                                <>
+                                  <Typography component={'div'}
+                                    sx={{
+                                      color: "#999",
+                                      fontSize: "14px",
+                                      fontWeight: '600',
+                                    }}>
+                                    {widget.Description}
+                                  </Typography>
+                                  {widget.Price !== null &&
+                                    <Typography component={'div'} sx={{
+                                      color: '#007fe0',
+                                      fontWeight: 600,
+                                      fontSize: '16px',
+                                    }}>
+                                      {`Rs.${widget.Price}`}
+                                    </Typography>
+                                  }
+                                </>
                               }
 
-                            </ListItemButton>
+                            />
 
-                          )
-                        })}
-                      </div>
+                            {
+                              (widget.ItemImage) ? (
+                                <div className="food-img" style={{}}>
+                                  <img
+                                    src={`https://www.foodchow.com/FoodItemImages/${widget.ItemImage}`}
+                                    alt={widget.ItemName}
+                                    // height={50}
+                                    // width={50}
+                                  // onError={(e) => e.target.src = '/fallback.jpg'} // fallback image
+                                  />
+                                  <Button variant='outlined' className='add-btn btn-img'
 
+                                    onClick={() => { ShowDetails(widget.ItemName) }}
+                                  >Add</Button>
+                                </div>
+                              ) : (
+                                <Button variant='outlined' sx={{ borderRadius: '20px',marginRight:"32px" ,}}
+                                  className='add-btn no-img'
+                                  onClick={() => { ShowDetails(widget.ItemName) }}
 
-                    </React.Fragment>
+                                >Add</Button>
+
+                              )
+                            }
+
+                          </ListItemButton>
+
+                        )
+                      })}
+                    </div>
+                    {/* {ModalOpen && <AddProduct/>} */}
+
+                  </React.Fragment>
                   )
 
                 })
